@@ -18,7 +18,7 @@ class Neighborhood {
   };
   meals(){
     let newArray = this.customers().map(customer => customer.meals());
-    return newArray;
+    return Array.concat.apply([], newArray);
   };
 };
 class Customer{
