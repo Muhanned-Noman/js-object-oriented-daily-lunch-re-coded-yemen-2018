@@ -66,9 +66,9 @@ class Delivery{
     return store.meals.find(meal => meal.id === this.mealId);
   };
   customer(){
-    return store.customers.filter(customer => {customer.id === this.customerId});
+    return store.customers.find(customer => customer.id === this.customerId);
   };
   neighborhood(){
-    return store.neighborhoods.filter(neighborhood => {neighborhood.id === this.neighborhoodId});
+    return store.neighborhoods.find(neighborhood => neighborhood.id === this.neighborhoodId);
   };
 };
