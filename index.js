@@ -48,7 +48,7 @@ class Meal{
     return store.deliveries.filter(deliverie => {return deliverie.mealId === this.id;});
   };
   customers(){
-    return store.customers.filter(customer => {return customer.id === this.id;});
+    return this.deliveries().map(deliverie => deliverie.customer());
   };
   static byPrice(){
 
