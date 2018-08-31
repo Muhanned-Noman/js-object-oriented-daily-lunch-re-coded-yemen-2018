@@ -17,8 +17,8 @@ class Neighborhood {
     return store.customers.filter(customer => {return customer.neighborhoodId === this.id;});
   };
   meals(){
-    let newArray = this.customers().map(customer => customer.meals());
-    return new Set(Array.concat.apply([], newArray));
+    let newArray = Array.concat.apply([], this.customers().map(customer => customer.meals()));
+    return [...new Set(newArray)];
   };
 };
 class Customer{
