@@ -11,10 +11,10 @@ class Neighborhood {
     store.neighborhoods.push(this);
   };
   deliveries(){
-    return store.deliveries.filter(deliverie => {return deliverie.id === this.id;});
+    return store.deliveries.filter(deliverie => {return deliverie.neighborhoodId === this.id;});
   };
   customers(){
-    return store.customers.filter(customer => {return customer.id === this.id;});
+    return store.customers.filter(customer => {return customer.neighborhoodId === this.id;});
   };
   meals(){
 
@@ -23,15 +23,15 @@ class Neighborhood {
 class Customer{
   constructor(name, neighborhoodId){
     this.name = name;
-    neighborhoodId.id = neighborhoodId;
+    this.neighborhoodId = neighborhoodId;
     this.id = ++cusId;
     store.customers.push(this);
   };
   deliveries(){
-    return store.deliveries.filter(deliverie => {return deliverie.id === this.id;});
+    return store.deliveries.filter(deliverie => {return deliverie.customerId === this.id;});
   };
   meals(){
-    return store.meals.filter(meal => {return meal.id === this.id;});
+    return store.meals.filter(meal => {return meal.mealId === this.id;});
   };
   totalSpent(){
 
@@ -45,7 +45,7 @@ class Meal{
     store.meals.push(this);
   };
   deliveries(){
-    return store.deliveries.filter(deliverie => {return deliverie.id === this.id;});
+    return store.deliveries.filter(deliverie => {return deliverie.mealId === this.id;});
   };
   customers(){
     return store.customers.filter(customer => {return customer.id === this.id;});
@@ -56,10 +56,19 @@ class Meal{
 };
 class Delivery{
   constructor(mealId, neighborhoodId, customerId){
-    mealId.id = mealId;
-    neighborhoodId.id = neighborhoodId;
-    customerId.id = customerId;
+    this.mealId = mealId;
+    this.neighborhoodId = neighborhoodId;
+    this.customerId = customerId;
     this.id = ++deliId;
     store.deliveries.push(this);
+  };
+  meal(){
+    return store.meals.filter(meal => {meal.id === this.mealId});
+  };
+  customer(){
+    return store.customers.filter(customer => {customer.id === this.customerId});
+  };
+  neighborhood(){
+    return store.neighborhoods.filter(neighborhood => {neighborhood.id === this.neighborhoodId});
   };
 };
